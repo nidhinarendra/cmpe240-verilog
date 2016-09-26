@@ -44,6 +44,7 @@ module dp_tb;
                 18:begin WEA = 0; incA = 0; WEB = 0; incB = 1; end
             endcase
         end
+        rst = 1;
     end
     
 /*    always begin

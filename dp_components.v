@@ -16,7 +16,7 @@ module memoryA(DOut1, AddrA, WEA, DataInA);
 endmodule
 
 module memoryB(AddrB, WEB, DataInB);
-    input [2:0] AddrB;
+    input [1:0] AddrB;
     input WEB;
     input [7:0] DataInB;
 
@@ -40,7 +40,8 @@ module counterA(addr, inc, reset, clk);
     
     always @(posedge clk) begin
         if(reset) addr = 3'b0;
-        else addr = addr + 3'b1;
+        else if(inc) addr = addr + 3'b1;
+        else addr = addr;
     end
 endmodule
 
@@ -54,7 +55,8 @@ module counterB(addr, inc, reset, clk);
     
     always @(posedge clk) begin
         if(reset) addr = 2'b0;
-        else addr = addr + 2'b1;
+        else if(inc) addr = addr + 2'b1;
+        else addr = addr;
     end
 endmodule
 
@@ -103,7 +105,7 @@ module mux2to1(dataOut, addIn, subIn, sel);
     input sel;
     
     always @(addIn, subIn, sel) begin
-        if(sel) dataOut = subIn;
-        else dataOut = addIn;
+        if(sel) dataOut = addIn;
+        else dataOut = subIn;
     end
 endmodule
