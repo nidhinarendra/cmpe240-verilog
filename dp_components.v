@@ -28,8 +28,16 @@ module dreg(q, d, clk);
     end
 endmodule
 
-module comparator();
-
+module comparator(sign, in1, in2);
+    output reg sign;
+    input [7:0] in1;
+    input [7:0] in2;
+    
+    always @(in1, in2) begin
+        if(in1 >= in2) sign = 0;
+        else sign = 1;
+    end
+    
 endmodule
 
 module adder(addOut, in1, in2);
@@ -58,5 +66,4 @@ module mux2to1(dataOut, addIn, subIn, sel);
         if(sel) dataOut = subIn;
         else dataOut = addIn;
     end
-    
 endmodule
