@@ -1,5 +1,6 @@
-module cu(clk, rst, WEA, IncA, IncB, WEB);
-    input clk, rst, WEA, IncA, IncB, WEB;
+module cu(WEA, IncA, IncB, WEB, clk, rst);
+    input clk, rst;
+    output WEA, IncA, IncB, WEB;
     reg [4:0] count;
     reg reset; //need this to AND with input rst signal and count values
     
