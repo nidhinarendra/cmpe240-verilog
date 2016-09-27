@@ -6,7 +6,7 @@ module memoryA(DOut1, AddrA, WEA, DataInA);
 
     reg [7:0] memA [7:0];
     
-    always @(AddrA, DataInA, WEA)begin
+    always @(AddrA, WEA)begin
         if(WEA) memA[AddrA] = DataInA;
         else begin
             memA[AddrA] = memA[AddrA];
@@ -22,7 +22,7 @@ module memoryB(AddrB, WEB, DataInB);
 
     reg [7:0] memB [3:0];
     
-    always @(AddrB, DataInB, WEB)begin
+    always @(AddrB, WEB)begin
         if(WEB) memB[AddrB] = DataInB;
         else begin 
             memB[AddrB] = memB[AddrB];
@@ -39,9 +39,9 @@ module counterA(addr, inc, reset, clk);
     end
     
     always @(posedge clk) begin
-        if(reset) addr = 3'b0;
-        else if(inc) addr = addr + 3'b1;
-        else addr = addr;
+        if(reset) addr <= 3'b0;
+        else if(inc) addr <= addr + 3'b1;
+        else addr <= addr;
     end
 endmodule
 
@@ -50,13 +50,13 @@ module counterB(addr, inc, reset, clk);
     input inc, reset, clk;
     
     initial begin
-        addr = 0;
+        addr <= 0;
     end
     
     always @(posedge clk) begin
-        if(reset) addr = 2'b0;
-        else if(inc) addr = addr + 2'b1;
-        else addr = addr;
+        if(reset) addr <= 2'b0;
+        else if(inc) addr <= addr + 2'b1;
+        else addr <= addr;
     end
 endmodule
 
@@ -66,7 +66,7 @@ module dreg(q, d, clk);
     input clk;
     
     always @(posedge clk) begin
-        q = d;
+        q <= d;
     end
 endmodule
 
