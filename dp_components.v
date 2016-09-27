@@ -38,7 +38,7 @@ module counterA(addr, inc, reset, clk);
         addr = 0;
     end
     
-    always @(posedge clk) begin
+    always @(negedge clk) begin
         if(reset) addr <= 3'b0;
         else if(inc) addr <= addr + 3'b1;
         else addr <= addr;
