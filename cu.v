@@ -1,9 +1,9 @@
-module cu(WEA, IncA, IncB, WEB, clk, rst);
+module cu(reset_out, WEA, IncA, IncB, WEB, clk, rst);
     input clk, rst;
     output WEA, IncA, IncB, WEB;
     
     wire [4:0] count;
-    wire reset_out;
+    output reset_out;
     //wire reset; //need this to AND with input rst signal and count values
     
     //instantiate up_counter count, rst, clk
