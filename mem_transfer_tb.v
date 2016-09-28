@@ -14,7 +14,7 @@ module mem_transfer_tb;
         rst = 0;
         clk = 1; #5;
         for(i = 0; i < 60; i = i + 1)begin
-            dataInA = i;
+           dataInA = i;
             clk = 0; #5;
             clk = 1; #5;
         end
