@@ -16,13 +16,27 @@ module gen_IncA(IncA, count);
     output IncA;
     input [4:0] count;
     
-    assign IncA = ~((count[4] & ~count[3] & ~count[2] & ~count[1] & count[0]) |
+   /* assign IncA = ~((count[4] & ~count[3] & ~count[2] & ~count[1] & count[0]) |
                         (count[4] & ~count[3] & ~count[2] & count[1] & ~count[0]) |
-                        (count[4] & ~count[3] & ~count[2] & count[1] & count[0]));
-   
-    /*assign IncA = ~(~(count[4] & ~count[3] & ~count[2] & ~count[1] & count[0]) |
-                    ~(count[4] & ~count[3] & ~count[2] & count[1] & ~count[0]) |
-                    ~(count[4] & ~count[3] & ~count[2] & count[1] & count[0]));*/
+                        (count[4] & ~count[3] & ~count[2] & count[1] & count[0]));*/
+    assign IncA = ~count[4] & ~count[3] & ~count[2] & ~count[1] & count[0] |
+                ~count[4] & ~count[3] & ~count[2] & count[1] & ~count[0] |
+                ~count[4] & ~count[3] & ~count[2] & count[1] & count[0] |
+                ~count[4] & ~count[3] & count[2] & ~count[1] & ~count[0] |
+                ~count[4] & ~count[3] & count[2] & ~count[1] & count[0] |
+                ~count[4] & ~count[3] & count[2] & count[1] & ~count[0] |
+                ~count[4] & ~count[3] & count[2] & count[1] & count[0] |
+                ~count[4] & count[3] & ~count[2] & ~count[1] & ~count[0] | //8
+                ~count[4] & count[3] & ~count[2] & ~count[1] & count[0] |
+                ~count[4] & count[3] & ~count[2] & count[1] & ~count[0] |
+                ~count[4] & count[3] & ~count[2] & count[1] & count[0] |
+                ~count[4] & count[3] & count[2] & ~count[1] & ~count[0] |
+                ~count[4] & count[3] & count[2] & ~count[1] & count[0] |
+                ~count[4] & count[3] & count[2] & count[1] & ~count[0] |
+                ~count[4] & count[3] & count[2] & count[1] & count[0] |
+                count[4] & ~count[3] & ~count[2] & ~count[1] & ~count[0] |
+                count[4] & ~count[3] & ~count[2] & ~count[1] & count[0] |
+                ~count[4] & ~count[3] & ~count[2] & count[1] & ~count[0]; //18
 endmodule
 
 module gen_IncB(IncB, count);
